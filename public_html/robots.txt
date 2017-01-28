@@ -1,0 +1,6 @@
+robots.txt 
+# URL:http://way2art.com
+#Sitemap:http://way2art.com/sitemap.xml
+# Allow all robots
+User-agent: *
+Disallow:
