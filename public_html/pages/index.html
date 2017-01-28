@@ -128,7 +128,7 @@
                                         <div id="colorSelector">
                                             <div style="background-color: #0000ff;">
                                             </div>
-                                            <input id="test" type="hidden" value="" />
+                                            <input type="hidden" value="" />
                                         </div>
 
                                     </li>
@@ -234,13 +234,13 @@
                 }
                 canvas.isDrawingMode = currentTool.isDrawingTool;
             });
-            
-            $('#test').change(function() {
+
+            $('#colorSelector input').change(function () {
                 currentTool.brush.color = $(this).val();
             });
 
             $('#resetButton').click(function (e) {
-                redraw();
+                canvas.clear();
             });
 
             $('#canvas').mousedown(function (e) {
