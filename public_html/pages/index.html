@@ -58,56 +58,56 @@
                 <!-- /.navbar-header -->
 
                 <ul class="nav navbar-top-links navbar-right">
-<!--                    <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
-                            <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
-                        </a>
-                        <ul class="dropdown-menu dropdown-messages">
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a href="#">
-                                    <div>
-                                        <strong>John Smith</strong>
-                                        <span class="pull-right text-muted">
-                                            <em>Yesterday</em>
-                                        </span>
-                                    </div>
-                                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                                </a>
-                            </li>
-                            <li class="divider"></li>
-                            <li>
-                                <a class="text-center" href="#">
-                                    <strong>Read All Messages</strong>
-                                    <i class="fa fa-angle-right"></i>
-                                </a>
-                            </li>
-                        </ul>
-                         /.dropdown-messages 
-                    </li>-->
+                    <!--                    <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-messages">
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a class="text-center" href="#">
+                                                        <strong>Read All Messages</strong>
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                             /.dropdown-messages 
+                                        </li>-->
                     <!-- /.dropdown -->
                 </ul>
                 <!-- /.navbar-top-links -->
@@ -119,7 +119,7 @@
                                 <a id="resetButton" href="#"><i class="fa fa-trash fa-fw"></i> Reset</a>
                             </li>
                             <li>
-                                <a href="#"><i class="fa fa-pencil fa-fw"></i> Pen<span class="fa arrow"></span></a>
+                                <a id="pencil" href="#"><i class="fa fa-pencil fa-fw"></i> Pencil<span class="fa arrow"></span></a>
                                 <ul class="nav nav-second-level">
                                     <li class="sidebar-second-lvl-entry">
                                         <div class="sidebar-tool one-line">
@@ -128,6 +128,7 @@
                                         <div id="colorSelector">
                                             <div style="background-color: #0000ff;">
                                             </div>
+                                            <input id="test" type="hidden" value="" />
                                         </div>
 
                                     </li>
@@ -137,7 +138,7 @@
                                         </div>    
                                         <!-- Source: http://codepen.io/thelifemgmt/pen/CeLqA -->
                                         <div class="range-slider">
-                                            <input id="pen-size" class="range-slider__range" type="range" value="6" min="0" max="50">
+                                            <input id="penSize" class="range-slider__range" type="range" value="10" min="1" max="50">
                                             <span class="range-slider__value">0</span>
                                         </div>
 
@@ -155,7 +156,7 @@
             <div id="page-wrapper">
                 <div class="row">
                     <div class="col-lg-12">
-                        <div id="drawing-area">
+                        <div id="drawingArea">
                             <canvas id="canvas" class="canvas-layer" height="500" width="500"></canvas>
                         </div>
                     </div>
@@ -180,109 +181,83 @@
         <!-- Morris Charts JavaScript -->
         <script src="../vendor/raphael/raphael.min.js"></script>
         <script src="../vendor/morrisjs/morris.min.js"></script>
-
-        <!-- Custom Theme JavaScript -->
         <script src="../vendor/sb_admin_v2_0/js/sb-admin-2.js"></script>
         <script type="text/javascript" src="../vendor/colorpicker/js/colorpicker.js"></script>
+        <script type="text/javascript" src="../vendor/fabricjs/fabric.js"></script>
 
+        <!-- custom js -->
+        <script src="../js/initColorPickers.js" type="text/javascript"></script>
+        <script src="../js/toolProvider.js" type="text/javascript"></script>
 
         <script type="text/javascript">
-            $('#colorSelector').ColorPicker({
-                color: '#0000ff',
-                onShow: function (colpkr) {
-                    $(colpkr).fadeIn(500);
-                    return false;
-                },
-                onHide: function (colpkr) {
-                    $(colpkr).fadeOut(500);
-                    return false;
-                },
-                onChange: function (hsb, hex, rgb) {
-                    $('#colorSelector div').css('backgroundColor', '#' + hex);
-                }
-            });
+            var canvas = new fabric.Canvas('canvas');
+            var currentTool = getTool('default');
 
-            var context = document.getElementById('canvas').getContext("2d");
-            //document.getElementById('canvas');
-            var clickX = new Array();
-            var clickY = new Array();
-            var clickColor = new Array();
-            var clickSize = new Array();
-            var clickDrag = new Array();
             var paint;
 
             $(window).on('load', function (e) {
                 $('#page-wrapper').outerHeight($("#wrapper").outerHeight() - $('#navbar-top').outerHeight());
-                $('#drawing-area').outerHeight($("#page-wrapper").outerHeight() - $('#navbar-top').outerHeight());
-                context.canvas.setAttribute('height', $('#drawing-area').height());
-                context.canvas.setAttribute('width', $('#drawing-area').width());
+                $('#drawingArea').outerHeight($("#page-wrapper").outerHeight() - $('#navbar-top').outerHeight());
+                canvas.setHeight($('#drawingArea').height());
+                canvas.setWidth($('#drawingArea').width());
+
+            });
+
+            $('#drawingArea').mouseenter(function () {
+                $('#drawingArea').css('cursor', currentTool.cursor);
+                if (typeof currentTool.surrounding !== "undefined" &&
+                        currentTool.surrounding !== null) {
+                    canvas.add(currentTool.surrounding);
+                }
+            });
+
+            $('#drawingArea').mouseleave(function () {
+                $('#drawingArea').css('cursor', currentTool.cursor);
+                if (typeof currentTool.surrounding !== "undefined" &&
+                        currentTool.surrounding !== null) {
+                    canvas.remove(currentTool.surrounding);
+                }
+            });
+
+            $('#drawingArea').mousemove(function () {
+                redraw();
+            });
+
+            $('#pencil').click(function () {
+                if (!$(this).parent().hasClass('active')) {
+                    currentTool = getTool('pencil');
+                    currentTool.brush.initialize(canvas);
+                    canvas.freeDrawingBrush = currentTool.brush;
+                } else
+                {
+                    currentTool = getTool('default');
+                }
+                canvas.isDrawingMode = currentTool.isDrawingTool;
             });
             
-            $('#resetButton').click(function(e) {
-                clickX = new Array()
-                clickY = new Array();
-                clickColor = new Array();
-                clickSize = new Array();
-                clickDrag = new Array();
+            $('#test').change(function() {
+                currentTool.brush.color = $(this).val();
+            });
+
+            $('#resetButton').click(function (e) {
                 redraw();
-            })
-
-            function getMousePos(canvas, evt) {
-                var rect = canvas.getBoundingClientRect();
-                return {
-                    x: evt.clientX - rect.left,
-                    y: evt.clientY - rect.top
-                };
-            }
-
+            });
 
             $('#canvas').mousedown(function (e) {
-                var mouseX = getMousePos(context.canvas, e).x;
-                var mouseY = getMousePos(context.canvas, e).y;
-
-                paint = true;
-                addClick(mouseX, mouseY);
                 redraw();
             });
 
             $('#canvas').mousemove(function (e) {
                 if (paint) {
-                    addClick(getMousePos(this, e).x, getMousePos(this, e).y, true);
+//                    addClick(getMousePos(this, e).x, getMousePos(this, e).y, true);
                     redraw();
                 }
             });
 
-            $('#canvas').mouseup(function (e) {
-                paint = false;
-            });
-
-
-
-            function addClick(x, y, dragging)
-            {
-                clickX.push(x);
-                clickY.push(y);
-                clickDrag.push(dragging);
-                clickColor.push($('#colorSelector div').css('backgroundColor'));
-                clickSize.push($('#pen-size').val());
-            }
-
             function redraw() {
-                context.clearRect(0, 0, context.canvas.width, context.canvas.height); // Clears the canvas
-
-                for (var i = 0; i < clickX.length; i++) {
-                    context.beginPath();
-                    context.strokeStyle = clickColor[i];
-                    context.lineJoin = "round";
-                    context.lineWidth = clickSize[i];
-                    if (clickDrag[i] && i) {
-                        context.moveTo(clickX[i - 1], clickY[i - 1]);
-                    } else {
-                        context.moveTo(clickX[i] - 1, clickY[i]);
-                    }
-                    context.lineTo(clickX[i], clickY[i]);
-                    context.stroke();
-                }
+                currentTool.drawTool(canvas.getPointer().x, canvas.getPointer().y);
+                canvas.bringToFront(currentTool.surrounding);
+                canvas.renderAll();
             }
 
             //------- Source: http://codepen.io/thelifemgmt/pen/CeLqA ----------
@@ -300,6 +275,7 @@
 
                     range.on('input', function () {
                         $(this).next(value).html(this.value);
+                        currentTool.setSize(this.value); //update tool size
                     });
                 });
             };
