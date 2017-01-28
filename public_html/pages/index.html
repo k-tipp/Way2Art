@@ -128,7 +128,7 @@
                                         <div id="colorSelector">
                                             <div style="background-color: #0000ff;">
                                             </div>
-                                            <input type="hidden" value="" />
+                                            <input type="hidden" value="#0000ff" />
                                         </div>
 
                                     </li>
@@ -228,6 +228,8 @@
                     currentTool = getTool('pencil');
                     currentTool.brush.initialize(canvas);
                     canvas.freeDrawingBrush = currentTool.brush;
+                    $('#colorSelector input').change();
+                    currentTool.brush.width = 2 * (currentTool.getSize() - 1);
                 } else
                 {
                     currentTool = getTool('default');
