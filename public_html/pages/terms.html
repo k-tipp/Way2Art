@@ -116,35 +116,7 @@
                     <div class="sidebar-nav navbar-collapse">
                         <ul class="nav" id="side-menu">
                             <li>
-                                <a id="resetButton" href="#"><i class="fa fa-trash fa-fw"></i> Reset</a>
-                            </li>
-                            <li>
-                                <a id="pencil" href="#"><i class="fa fa-pencil fa-fw"></i> Pencil<span class="fa arrow"></span></a>
-                                <ul class="nav nav-second-level">
-                                    <li class="sidebar-second-lvl-entry">
-                                        <div class="sidebar-tool one-line">
-                                            Color
-                                        </div>
-                                        <div id="colorSelector">
-                                            <div style="background-color: #0000ff;">
-                                            </div>
-                                            <input type="hidden" value="#0000ff" />
-                                        </div>
-
-                                    </li>
-                                    <li class="sidebar-second-lvl-entry">
-                                        <div class="sidebar-tool">
-                                            Size
-                                        </div>    
-                                        <!-- Source: http://codepen.io/thelifemgmt/pen/CeLqA -->
-                                        <div class="range-slider">
-                                            <input id="penSize" class="range-slider__range" type="range" value="10" min="1" max="50">
-                                            <span class="range-slider__value">0</span>
-                                        </div>
-
-                                    </li>
-                                </ul>
-                                <!-- /.nav-second-level -->
+                                <a id="back" href="index.html"><i class="fa fa-trash fa-fw"></i> Back</a>
                             </li>
                         </ul>
                     </div>
@@ -155,11 +127,31 @@
 
             <div id="page-wrapper">
                 <div class="row">
-                    <div class="col-lg-12">
-                        <div id="drawingArea">
-                            <canvas id="canvas" class="canvas-layer" height="500" width="500"></canvas>
-                        </div>
-                    </div>
+				<p>
+					<h1>Therms of use</h1>
+					<h2>ALPHA Version</h2>
+					<p>This software is still under development! So there is a good chance that you encounter bugs if you use this web application.
+					</p>
+					<h2>The MIT License (MIT)</h2>
+					<p>Copyright (c) way2art.com
+					<br/><br/>
+					Permission is hereby granted, free of charge, to any person obtaining a copy
+					of this software and associated documentation files (the "Software"), to deal
+					in the Software without restriction, including without limitation the rights
+					to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+					copies of the Software, and to permit persons to whom the Software is
+					furnished to do so, subject to the following conditions:
+					<br/><br/>
+					The above copyright notice and this permission notice shall be included in
+					all copies or substantial portions of the Software.
+					<br/><br/>
+					THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+					IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+					FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+					AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+					LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+					OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
+					THE SOFTWARE.</p></p>
                     <!-- /.col-lg-12 -->
                 </div>
 				<div class="row">
@@ -214,105 +206,6 @@
         <!-- custom js -->
         <script src="../js/initColorPickers.js" type="text/javascript"></script>
         <script src="../js/toolProvider.js" type="text/javascript"></script>
-
-        <script type="text/javascript">
-            var canvas = new fabric.Canvas('canvas');
-            var currentTool = getTool('default');
-
-            var paint;
-
-            $(window).on('load', function (e) {
-                $('#page-wrapper').outerHeight($("#wrapper").outerHeight() - $('#navbar-top').outerHeight());
-                $('#drawingArea').outerHeight($("#page-wrapper").outerHeight() - $('#navbar-top').outerHeight());
-				$('.footer').width($('#drawingArea').width());
-                canvas.setHeight($('#drawingArea').height());
-                canvas.setWidth($('#drawingArea').width());
-
-            });
-
-            $('#drawingArea').mouseenter(function () {
-                $('#drawingArea').css('cursor', currentTool.cursor);
-                if (typeof currentTool.surrounding !== "undefined" &&
-                        currentTool.surrounding !== null) {
-                    canvas.add(currentTool.surrounding);
-                }
-            });
-
-            $('#drawingArea').mouseleave(function () {
-                $('#drawingArea').css('cursor', currentTool.cursor);
-                if (typeof currentTool.surrounding !== "undefined" &&
-                        currentTool.surrounding !== null) {
-                    canvas.remove(currentTool.surrounding);
-                }
-            });
-
-            $('#drawingArea').mousemove(function () {
-                redraw();
-            });
-
-            $('#pencil').click(function () {
-                if (!$(this).parent().hasClass('active')) {
-                    currentTool = getTool('pencil');
-                    currentTool.brush.initialize(canvas);
-                    canvas.freeDrawingBrush = currentTool.brush;
-                    $('#colorSelector input').change();
-                    currentTool.brush.width = 2 * (currentTool.getSize() - 1);
-                } else
-                {
-                    currentTool = getTool('default');
-                }
-                canvas.isDrawingMode = currentTool.isDrawingTool;
-            });
-
-            $('#colorSelector input').change(function () {
-                currentTool.brush.color = $(this).val();
-            });
-
-            $('#resetButton').click(function (e) {
-                canvas.clear();
-            });
-
-            $('#canvas').mousedown(function (e) {
-                redraw();
-            });
-
-            $('#canvas').mousemove(function (e) {
-                if (paint) {
-//                    addClick(getMousePos(this, e).x, getMousePos(this, e).y, true);
-                    redraw();
-                }
-            });
-
-            function redraw() {
-                currentTool.drawTool(canvas.getPointer().x, canvas.getPointer().y);
-                canvas.bringToFront(currentTool.surrounding);
-                canvas.renderAll();
-            }
-
-            //------- Source: http://codepen.io/thelifemgmt/pen/CeLqA ----------
-            var rangeSlider = function () {
-                var slider = $('.range-slider'),
-                        range = $('.range-slider__range'),
-                        value = $('.range-slider__value');
-
-                slider.each(function () {
-
-                    value.each(function () {
-                        var value = $(this).prev().attr('value');
-                        $(this).html(value);
-                    });
-
-                    range.on('input', function () {
-                        $(this).next(value).html(this.value);
-                        currentTool.setSize(this.value); //update tool size
-                    });
-                });
-            };
-
-            rangeSlider();
-            // -------------------------------------------------------
-
-        </script>
     </body>
 
 </html>
