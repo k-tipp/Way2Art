@@ -1,17 +1,331 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
     <head>
-        <title>Paint a picture on way2art.com</title>
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="A drawing and picture editing tool. 
               Currently in alpha state and a lot of content is still missing.">
         <meta name="author" content="way2art.com">
-        <script language="javascript">
-            window.location.href = "pages/index.html";
-        </script>
+		<script type="application/ld+json">
+		{
+		  "@context": "http://schema.org",
+		  "@type": "webapplication",
+		  "url": "http://www.way2art.com",
+		  "description": "A drawing and picture editing tool. Currently in alpha state and a lot of content is still missing."
+		  "contactPoint": [{
+			"@type": "ContactPoint",
+			"email": "way2art_com@hotmail.com",
+			"contactType": "customer service"
+		  }]
+		}
+		</script>
+        <title>Paint a painting on way2art.com</title>
+		<link rel="alternate" hreflang="en" href="http://way2art.com/" />
+        <link rel="icon" type="image/png" sizes="32x32" href="favicon.ico">
+        <!-- Bootstrap Core CSS -->
+        <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+        <!-- MetisMenu CSS -->
+        <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+        <!-- SB Admin 2.0 CSS -->
+        <link href="vendor/sb_admin_v2_0/css/sb-admin-2.css" rel="stylesheet">
+
+        <!-- Morris Charts CSS -->
+        <link href="vendor/morrisjs/morris.css" rel="stylesheet">
+
+        <!-- SB Admin 2.0 Fonts -->
+        <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link rel="stylesheet" media="screen" type="text/css" href="vendor/colorpicker/css/colorpicker.css" />
+
+        <!-- Custom CSS -->
+        <link href="css/way2art.css" rel="stylesheet">
+        <link href="css/cssRangeSlider.css" rel="stylesheet">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
     </head>
+
     <body>
-        Go to <a href="pages/index.html">pages/index.html</a>
+
+        <div id="wrapper">
+
+            <!-- Navigation -->
+            <nav id="navbar-top" class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="index.html">Way2Art - ALPHA Version</a>
+                </div>
+                <!-- /.navbar-header -->
+
+                <ul class="nav navbar-top-links navbar-right">
+                    <!--                    <li class="dropdown">
+                                            <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+                                                <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
+                                            </a>
+                                            <ul class="dropdown-menu dropdown-messages">
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a href="#">
+                                                        <div>
+                                                            <strong>John Smith</strong>
+                                                            <span class="pull-right text-muted">
+                                                                <em>Yesterday</em>
+                                                            </span>
+                                                        </div>
+                                                        <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
+                                                    </a>
+                                                </li>
+                                                <li class="divider"></li>
+                                                <li>
+                                                    <a class="text-center" href="#">
+                                                        <strong>Read All Messages</strong>
+                                                        <i class="fa fa-angle-right"></i>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                             /.dropdown-messages 
+                                        </li>-->
+                    <!-- /.dropdown -->
+                </ul>
+                <!-- /.navbar-top-links -->
+
+                <div class="navbar-default sidebar" role="navigation">
+                    <div class="sidebar-nav navbar-collapse">
+                        <ul class="nav" id="side-menu">
+                            <li>
+                                <a id="resetButton" href="#"><i class="fa fa-trash fa-fw"></i> Reset</a>
+                            </li>
+                            <li>
+                                <a id="pencil" href="#"><i class="fa fa-pencil fa-fw"></i> Pencil<span class="fa arrow"></span></a>
+                                <ul class="nav nav-second-level">
+                                    <li class="sidebar-second-lvl-entry">
+                                        <div class="sidebar-tool one-line">
+                                            Color
+                                        </div>
+                                        <div id="colorSelector">
+                                            <div style="background-color: #0000ff;">
+                                            </div>
+                                            <input type="hidden" value="#0000ff" />
+                                        </div>
+
+                                    </li>
+                                    <li class="sidebar-second-lvl-entry">
+                                        <div class="sidebar-tool">
+                                            Size
+                                        </div>    
+                                        <!-- Source: http://codepen.io/thelifemgmt/pen/CeLqA -->
+                                        <div class="range-slider">
+                                            <input id="penSize" class="range-slider__range" type="range" value="10" min="1" max="50">
+                                            <span class="range-slider__value">0</span>
+                                        </div>
+
+                                    </li>
+                                </ul>
+                                <!-- /.nav-second-level -->
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- /.sidebar-collapse -->
+                </div>
+                <!-- /.navbar-static-side -->
+            </nav>
+
+            <div id="page-wrapper">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div id="drawingArea">
+                            <canvas id="canvas" class="canvas-layer" height="500" width="500"></canvas>
+                        </div>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+				<div class="row">
+					<div class="col-lg-16">
+						<footer class="footer">
+							<div class="container" style=" margin-top: 20px; border-color: #e7e7e7; background-color: #f8f8f8; border-width: 1px; border-style: solid; z-index: 1000;">
+								<p class="text-muted">
+									<span>&copy; way2art.com</span>
+									<span style="margin-left: 10px; margin-right: 10px;"><a href="pages/terms.html">Terms</a></span>
+									<span><a href="pages/privacy.html">Privacy</a></span>
+								</p>
+							</div>
+						</footer>
+					</div>
+				</div>
+				
+                <!-- /.row -->
+            </div>
+            <!-- /#page-wrapper -->
+			
+
+    
+
+        </div>
+        <!-- /#wrapper -->
+		<script>
+		  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+		  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+		  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+		  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+		  ga('create', 'UA-91781130-1', 'auto');
+		  ga('send', 'pageview');
+
+		</script>
+        <!-- jQuery -->
+        <script src="vendor/jquery/jquery.min.js"></script>
+
+        <!-- Bootstrap Core JavaScript -->
+        <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+        <!-- Metis Menu Plugin JavaScript -->
+        <script src="vendor/metisMenu/metisMenu.min.js"></script>
+
+        <!-- Morris Charts JavaScript -->
+        <script src="vendor/raphael/raphael.min.js"></script>
+        <script src="vendor/morrisjs/morris.min.js"></script>
+        <script src="vendor/sb_admin_v2_0/js/sb-admin-2.js"></script>
+        <script type="text/javascript" src="vendor/colorpicker/js/colorpicker.js"></script>
+        <script type="text/javascript" src="vendor/fabricjs/fabric.js"></script>
+
+        <!-- custom js -->
+        <script src="js/initColorPickers.js" type="text/javascript"></script>
+        <script src="js/toolProvider.js" type="text/javascript"></script>
+
+        <script type="text/javascript">
+            var canvas = new fabric.Canvas('canvas');
+            var currentTool = getTool('default');
+
+            var paint;
+
+            $(window).on('load', function (e) {
+                $('#page-wrapper').outerHeight($("#wrapper").outerHeight() - $('#navbar-top').outerHeight());
+                $('#drawingArea').outerHeight($("#page-wrapper").outerHeight() - $('#navbar-top').outerHeight());
+				$('.footer').width($('#drawingArea').width());
+                canvas.setHeight($('#drawingArea').height());
+                canvas.setWidth($('#drawingArea').width());
+
+            });
+
+            $('#drawingArea').mouseenter(function () {
+                $('#drawingArea').css('cursor', currentTool.cursor);
+                if (typeof currentTool.surrounding !== "undefined" &&
+                        currentTool.surrounding !== null) {
+                    canvas.add(currentTool.surrounding);
+                }
+            });
+
+            $('#drawingArea').mouseleave(function () {
+                $('#drawingArea').css('cursor', currentTool.cursor);
+                if (typeof currentTool.surrounding !== "undefined" &&
+                        currentTool.surrounding !== null) {
+                    canvas.remove(currentTool.surrounding);
+                }
+            });
+
+            $('#drawingArea').mousemove(function () {
+                redraw();
+            });
+
+            $('#pencil').click(function () {
+                if (!$(this).parent().hasClass('active')) {
+                    currentTool = getTool('pencil');
+                    currentTool.brush.initialize(canvas);
+                    canvas.freeDrawingBrush = currentTool.brush;
+                    $('#colorSelector input').change();
+                    currentTool.brush.width = 2 * (currentTool.getSize() - 1);
+                } else
+                {
+                    currentTool = getTool('default');
+                }
+                canvas.isDrawingMode = currentTool.isDrawingTool;
+            });
+
+            $('#colorSelector input').change(function () {
+                currentTool.brush.color = $(this).val();
+            });
+
+            $('#resetButton').click(function (e) {
+                canvas.clear();
+            });
+
+            $('#canvas').mousedown(function (e) {
+                redraw();
+            });
+
+            $('#canvas').mousemove(function (e) {
+                if (paint) {
+//                    addClick(getMousePos(this, e).x, getMousePos(this, e).y, true);
+                    redraw();
+                }
+            });
+
+            function redraw() {
+                currentTool.drawTool(canvas.getPointer().x, canvas.getPointer().y);
+                canvas.bringToFront(currentTool.surrounding);
+                canvas.renderAll();
+            }
+
+            //------- Source: http://codepen.io/thelifemgmt/pen/CeLqA ----------
+            var rangeSlider = function () {
+                var slider = $('.range-slider'),
+                        range = $('.range-slider__range'),
+                        value = $('.range-slider__value');
+
+                slider.each(function () {
+
+                    value.each(function () {
+                        var value = $(this).prev().attr('value');
+                        $(this).html(value);
+                    });
+
+                    range.on('input', function () {
+                        $(this).next(value).html(this.value);
+                        currentTool.setSize(this.value); //update tool size
+                    });
+                });
+            };
+
+            rangeSlider();
+            // -------------------------------------------------------
+
+        </script>
     </body>
+
 </html>
